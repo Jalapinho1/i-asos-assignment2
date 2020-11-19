@@ -4,4 +4,14 @@
 
     <bean name="userService" class="sk.stuba.fei.uim.asos.assignment2.user.service.UserService"/>
 
+    <bean class="sk.stuba.fei.uim.asos.assignment2.endpoint.UserEndpoint" name="userEndpoint">
+        <constructor-arg name="userService" ref="userService"/>
+    </bean>
+
+    <bean class="sk.stuba.fei.uim.asos.assignment2.insurance.service.IInsuranceContractServiceImpl" name="contractService"/>
+
+    <bean class="sk.stuba.fei.uim.asos.assignment2.endpoint.ContractEndpoint" name="contractEndpoint">
+        <constructor-arg name="contractService" ref="contractService"/>
+    </bean>
+
 </beans>

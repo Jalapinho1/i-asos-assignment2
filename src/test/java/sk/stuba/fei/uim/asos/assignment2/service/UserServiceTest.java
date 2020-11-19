@@ -7,9 +7,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import sk.stuba.fei.uim.asos.assignment2.user.domain.Address;
-import sk.stuba.fei.uim.asos.assignment2.user.domain.User;
+//import sk.stuba.fei.uim.asos.assignment2.user.domain.Address;
+//import sk.stuba.fei.uim.asos.assignment2.user.domain.User;
 import sk.stuba.fei.uim.asos.assignment2.user.service.IUserService;
+import sk.stuba.fei.uim.asos.assignment2.ws.Address;
+import sk.stuba.fei.uim.asos.assignment2.ws.User;
 
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class UserServiceTest {
         testUser.setLastname("Testovič");
         testUser.setEmail(TEST_EMAIL);
         testUser.setIdentificationNumber("651010/6455");
-        testUser.setPermanentAddress(new Address("84105", "Bratislava", "Matejkova", "5"));
+        testUser.setPermanentAddress(new Address());
 
         userService.add(testUser);
     }
@@ -46,7 +48,7 @@ public class UserServiceTest {
         testUser.setLastname("Testovič");
         testUser.setEmail(TEST_EMAIL);
         testUser.setIdentificationNumber("651010/6455");
-        testUser.setPermanentAddress(new Address("84105", "Bratislava", "Matejkova", "5"));
+        testUser.setPermanentAddress(new Address());
 
         assertNull(testUser.getId());
         testUser = userService.add(testUser);

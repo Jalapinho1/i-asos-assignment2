@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UsersWSDL"
+             targetNamespace="usersWSDLNamespace"
+             xmlns="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:ns="global"
+             xmlns:tns="usersWSDLNamespace"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+    <types>
+        <xsd:schema targetNamespace="usersWSDLNamespace">
+            <xsd:import namespace="global" schemaLocation="../xsd/users.xsd"></xsd:import>
+        </xsd:schema>
+    </types>
+
+    <service name="UserService">
+        <port name="UserServicePort" binding="tns:UserServicePortBinding">
+            <soap:address location="http://localhost:8080/user"></soap:address>
+        </port>
+    </service>
+
+    <binding name="UserServicePortBinding" type="tns:UserServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="list">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="addUser">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="updateUser">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getUserById">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <portType name="UserServicePortType">
+        <operation name="list">
+            <input name="request" message="tns:usersListRequest"/>
+            <output name="response" message="tns:usersListResponse"/>
+        </operation>
+        <operation name="addUser">
+            <input name="request" message="tns:addUserRequest"/>
+            <output name="response" message="tns:addUserResponse"/>
+        </operation>
+        <operation name="updateUser">
+            <input name="request" message="tns:updateUserRequest"/>
+            <output name="response" message="tns:updateUserResponse"/>
+        </operation>
+        <operation name="getUserById">
+            <input name="request" message="tns:getUserByIdRequest"/>
+            <output name="response" message="tns:getUserByIdResponse"/>
+        </operation>
+    </portType>
+
+
+    <message name="addUserRequest">
+        <part name="user" element="ns:addUserInput"/>
+    </message>
+    <message name="addUserResponse">
+        <part name="newUser" element="ns:addUserOutput"/>
+    </message>
+    <message name="updateUserRequest">
+        <part name="user" element="ns:updateUserInput"/>
+    </message>
+    <message name="updateUserResponse">
+        <part name="updatedUser" element="ns:addUserInput"/>
+    </message>
+    <message name="usersListRequest"></message>
+    <message name="usersListResponse">
+        <part name="list" element="ns:users"/>
+    </message>
+    <message name="getUserByIdRequest">
+        <part name="id" element="ns:getUserByIdInput"/>
+    </message>
+    <message name="getUserByIdResponse">
+        <part name="user" element="ns:getUserByIdOutput"/>
+    </message>
+
+</definitions>

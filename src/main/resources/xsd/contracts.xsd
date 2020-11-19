@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
+<xs:schema elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="global"
+           xmlns:tns="global"
+           version="1.1.0">
+
+    <xs:include schemaLocation="users.xsd"/>
+
+    <!-- Request and responses for WSDL -->
+    <xs:element name="addTravelInsuranceContractInput" type="tns:travel_insurance_contract"/>
+    <xs:element name="addTravelInsuranceContractOutput" type="tns:travel_insurance_contract"/>
+    <xs:element name="updateTravelInsuranceContractInput" type="tns:travel_insurance_contract"/>
+    <xs:element name="updateTravelInsuranceContractOutput" type="tns:travel_insurance_contract"/>
+    <xs:element name="getInsurerContractsInput" type="xs:long"/>
+
+    <!-- XSD Schema -->
+    <xs:element name="contracts">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="tns:contract" name="contract" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="contract" abstract="true">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="created" type="xs:date"/>
+            <xs:element name="insurer_id" type="xs:long"/>
+            <xs:element name="start_date" type="xs:date"/>
+            <xs:element name="end_date" type="xs:date"/>
+            <xs:element name="value" type="xs:float"/>
+            <xs:element name="monthly" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="life_insurance_contract" abstract="true">
+        <xs:complexContent>
+            <xs:extension base="tns:contract">
+                <xs:sequence>
+                    <xs:element name="insured_id" type="xs:long"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="travel_insurance_contract">
+        <xs:complexContent>
+            <xs:extension base="tns:life_insurance_contract">
+                <xs:sequence>
+                    <xs:element type="xs:boolean" name="insideEuropeanUnion"/>
+                    <xs:element name="type" type="tns:travel_purpose"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="accident_insurance_contract">
+        <xs:complexContent>
+            <xs:extension base="tns:life_insurance_contract">
+                <xs:sequence>
+                    <xs:element name="permanent_accident_policy_value" type="tns:priceType"/>
+                    <xs:element name="accident_death_policy_value" type="tns:priceType"/>
+                    <xs:element name="daily_hospitalization_compensations" type="tns:priceType"/>
+                    <xs:element name="type" type="tns:country_validity"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="nonlife_insurance_contract" abstract="true">
+        <xs:complexContent>
+            <xs:extension base="tns:contract">
+                <xs:sequence>
+                    <xs:element name="type" type="tns:property_type"/>
+                    <xs:element name="property_adress" type="xs:string"/>
+                    <xs:element name="property_value" type="tns:priceType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="household_insurance">
+        <xs:complexContent>
+            <xs:extension base="tns:nonlife_insurance_contract">
+                <xs:sequence>
+                    <xs:element name="household_equipment_value" type="tns:priceType"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="house_and_flat_insurance">
+        <xs:complexContent>
+            <xs:extension base="tns:nonlife_insurance_contract">
+                <xs:sequence>
+                    <xs:element name="garage_insurance" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="travel_purpose">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="pracovne"/>
+            <xs:enumeration value="rekreacne"/>
+            <xs:enumeration value="sport"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="country_validity">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SVET"/>
+            <xs:enumeration value="SLOVENSKO"/>
+            <xs:enumeration value="SVET + SLOVENSKO"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="property_type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Byt"/>
+            <xs:enumeration value="Rodinný dom - murovaný"/>
+            <xs:enumeration value="Rodinný dom - drevený"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="priceType">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

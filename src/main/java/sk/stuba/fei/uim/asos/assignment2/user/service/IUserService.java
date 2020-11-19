@@ -1,6 +1,8 @@
 package sk.stuba.fei.uim.asos.assignment2.user.service;
 
-import sk.stuba.fei.uim.asos.assignment2.user.domain.AbstractUser;
+//import sk.stuba.fei.uim.asos.assignment2.user.domain.AbstractUser;
+
+import sk.stuba.fei.uim.asos.assignment2.ws.AbstractUser;
 
 import java.util.List;
 
