@@ -19,6 +19,7 @@ public class IInsuranceContractServiceImpl implements IInsuranceContractService<
 
     @Override
     public Contract create(Contract contract) {
+        //TODO zadanie 3 - vytiahnem z Repository osobu a tej zmluvu priradim
         contract.setId(this.idCounter.incrementAndGet());
         contracts.put(contract.getId(), contract);
         return contract;

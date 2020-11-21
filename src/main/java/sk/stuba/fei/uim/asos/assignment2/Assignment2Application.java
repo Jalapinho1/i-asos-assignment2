@@ -27,16 +27,20 @@ public class Assignment2Application {
 
         TravelInsuranceContract contract = new TravelInsuranceContract();
         contract.setInsideEuropeanUnion(true);
-        contract.setType(TravelPurpose.SPORT);
+        contract.setTravelPurpose(TravelPurpose.SPORT);
         service.create(contract);
 
         Address address = new Address();
         address.setCity("Bratislava");
         address.setStreet("SNP");
+        address.setStreetNumber("15");
+        address.setZip("90502");
         User user = new User();
         user.setCorrespondenceAddress(address);
+        user.setSurname("Peter");
         user.setLastname("Mrkvicka");
         user.setEmail("mrkvica@gmail.com");
+        user.setIdentificationNumber("970824/7950");
         userService.add(user);
 
         Endpoint.publish("http://localhost:8080/contract", applicationContext.getBean(ContractEndpoint.class));

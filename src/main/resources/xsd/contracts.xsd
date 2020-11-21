@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="xs3p.xsl"?>
-<xs:schema elementFormDefault="qualified"
+<xs:schema
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="global"
            xmlns:tns="global"
@@ -9,11 +9,27 @@
     <xs:include schemaLocation="users.xsd"/>
 
     <!-- Request and responses for WSDL -->
-    <xs:element name="addTravelInsuranceContractInput" type="tns:travel_insurance_contract"/>
-    <xs:element name="addTravelInsuranceContractOutput" type="tns:travel_insurance_contract"/>
-    <xs:element name="updateTravelInsuranceContractInput" type="tns:travel_insurance_contract"/>
-    <xs:element name="updateTravelInsuranceContractOutput" type="tns:travel_insurance_contract"/>
     <xs:element name="getInsurerContractsInput" type="xs:long"/>
+    <!-- Request and responses for WSDL - Travel Insurance -->
+    <xs:element name="addTravelInsuranceInput" type="tns:travel_insurance_contract"/>
+    <xs:element name="addTravelInsuranceOutput" type="tns:travel_insurance_contract"/>
+    <xs:element name="updateTravelInsuranceInput" type="tns:travel_insurance_contract"/>
+    <xs:element name="updateTravelInsuranceOutput" type="tns:travel_insurance_contract"/>
+    <!-- Request and responses for WSDL - Accident Insurance -->
+    <xs:element name="addAccidentInsuranceInput" type="tns:accident_insurance_contract"/>
+    <xs:element name="addAccidentInsuranceOutput" type="tns:accident_insurance_contract"/>
+    <xs:element name="updateAccidentInsuranceInput" type="tns:accident_insurance_contract"/>
+    <xs:element name="updateAccidentInsuranceOutput" type="tns:accident_insurance_contract"/>
+    <!-- Request and responses for WSDL - Household Insurance -->
+    <xs:element name="addHouseholdInsuranceInput" type="tns:household_insurance"/>
+    <xs:element name="addHouseholdInsuranceOutput" type="tns:household_insurance"/>
+    <xs:element name="updateHouseholdInsuranceInput" type="tns:household_insurance"/>
+    <xs:element name="updateHouseholdInsuranceOutput" type="tns:household_insurance"/>
+    <!-- Request and responses for WSDL - House and flat Insurance -->
+    <xs:element name="addHouseAndFlatInsuranceInput" type="tns:house_and_flat_insurance"/>
+    <xs:element name="addHouseAndFlatInsuranceOutput" type="tns:house_and_flat_insurance"/>
+    <xs:element name="updateHouseAndFlatInsuranceInput" type="tns:house_and_flat_insurance"/>
+    <xs:element name="updateHouseAndFlatInsuranceOutput" type="tns:house_and_flat_insurance"/>
 
     <!-- XSD Schema -->
     <xs:element name="contracts">
@@ -30,8 +46,8 @@
             <xs:element name="insurer_id" type="xs:long"/>
             <xs:element name="start_date" type="xs:date"/>
             <xs:element name="end_date" type="xs:date"/>
-            <xs:element name="value" type="xs:float"/>
-            <xs:element name="monthly" type="xs:float"/>
+            <xs:element name="insurance_value" type="xs:float"/>
+            <xs:element name="monthly_payment" type="xs:float"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="life_insurance_contract" abstract="true">
@@ -48,7 +64,7 @@
             <xs:extension base="tns:life_insurance_contract">
                 <xs:sequence>
                     <xs:element type="xs:boolean" name="insideEuropeanUnion"/>
-                    <xs:element name="type" type="tns:travel_purpose"/>
+                    <xs:element name="travel_purpose" type="tns:travel_purpose"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -60,7 +76,7 @@
                     <xs:element name="permanent_accident_policy_value" type="tns:priceType"/>
                     <xs:element name="accident_death_policy_value" type="tns:priceType"/>
                     <xs:element name="daily_hospitalization_compensations" type="tns:priceType"/>
-                    <xs:element name="type" type="tns:country_validity"/>
+                    <xs:element name="country_validity" type="tns:country_validity"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -69,8 +85,8 @@
         <xs:complexContent>
             <xs:extension base="tns:contract">
                 <xs:sequence>
-                    <xs:element name="type" type="tns:property_type"/>
-                    <xs:element name="property_adress" type="xs:string"/>
+                    <xs:element name="property_type" type="tns:property_type"/>
+                    <xs:element name="property_address" type="tns:address"/>
                     <xs:element name="property_value" type="tns:priceType"/>
                 </xs:sequence>
             </xs:extension>

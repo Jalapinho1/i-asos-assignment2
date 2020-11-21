@@ -83,6 +83,7 @@
                     <packageName>sk.stuba.fei.uim.asos.assignment2.ws</packageName>
                     <keep>true</keep>
                     <sourceDestDir>${project.build.directory}/generated-sources/main/java</sourceDestDir>
+                    <bindingDirectory>src/main/resources/jaxb/</bindingDirectory>
                 </configuration>
                 <executions>
                     <execution>

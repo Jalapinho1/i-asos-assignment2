@@ -28,12 +28,12 @@
     <xs:complexContent>
       <xs:extension base="tns:abstractUser">
         <xs:sequence>
-          <xs:element name="surname" type="xs:string" minOccurs="0"/>
-          <xs:element name="lastname" type="xs:string" minOccurs="0"/>
-          <xs:element name="identificationNumber" type="xs:string" minOccurs="0"/>
-          <xs:element name="email" type="xs:string" minOccurs="0"/>
-          <xs:element name="permanentAddress" type="tns:address" minOccurs="0"/>
-          <xs:element name="correspondenceAddress" type="tns:address" minOccurs="0"/>
+          <xs:element name="surname" type="xs:string"/>
+          <xs:element name="lastname" type="xs:string"/>
+          <xs:element name="identification_number" type="tns:identificationNumber"/>
+          <xs:element name="email" type="tns:emailAddress"/>
+          <xs:element name="permanent_address" type="tns:address"/>
+          <xs:element name="correspondence_address" type="tns:address" minOccurs="0"/>
           <xs:element name="contracts" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
@@ -45,6 +45,18 @@
       <xs:element name="id" type="xs:long" minOccurs="0"/>
     </xs:sequence>
   </xs:complexType>
+
+  <xs:simpleType name="identificationNumber">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{6}/[0-9]{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="emailAddress">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[^@]+@[^\.]+\..+"/>
+    </xs:restriction>
+  </xs:simpleType>
 
 </xs:schema>
 

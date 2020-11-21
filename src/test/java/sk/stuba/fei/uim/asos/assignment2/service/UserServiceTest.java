@@ -36,7 +36,12 @@ public class UserServiceTest {
         testUser.setLastname("Testovič");
         testUser.setEmail(TEST_EMAIL);
         testUser.setIdentificationNumber("651010/6455");
-        testUser.setPermanentAddress(new Address());
+        Address address = new Address();
+        address.setCity("Bratislava");
+        address.setStreet("Matejkova");
+        address.setStreetNumber("5");
+        address.setZip("84105");
+        testUser.setPermanentAddress(address);
 
         userService.add(testUser);
     }
@@ -48,7 +53,12 @@ public class UserServiceTest {
         testUser.setLastname("Testovič");
         testUser.setEmail(TEST_EMAIL);
         testUser.setIdentificationNumber("651010/6455");
-        testUser.setPermanentAddress(new Address());
+        Address address = new Address();
+        address.setCity("Bratislava");
+        address.setStreet("Matejkova");
+        address.setStreetNumber("5");
+        address.setZip("84105");
+        testUser.setPermanentAddress(address);
 
         assertNull(testUser.getId());
         testUser = userService.add(testUser);

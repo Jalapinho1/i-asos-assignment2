@@ -21,25 +21,79 @@
 
     <binding name="ContractServicePortBinding" type="tns:ContractServicePortType">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="addTravelContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="updateTravelContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="addAccidentContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="updateAccidentContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="addHouseholdContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="updateHouseholdContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="addHouseAndFlatContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="updateHouseAndFlatContract">
+            <soap:operation/>
+            <input name="request">
+                <soap:body use="literal"/>
+            </input>
+            <output name="response">
+                <soap:body use="literal"/>
+            </output>
+        </operation>
         <operation name="list">
-            <soap:operation/>
-            <input name="request">
-                <soap:body use="literal"/>
-            </input>
-            <output name="response">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="addContract">
-            <soap:operation/>
-            <input name="request">
-                <soap:body use="literal"/>
-            </input>
-            <output name="response">
-                <soap:body use="literal"/>
-            </output>
-        </operation>
-        <operation name="updateContract">
             <soap:operation/>
             <input name="request">
                 <soap:body use="literal"/>
@@ -60,17 +114,41 @@
     </binding>
 
     <portType name="ContractServicePortType">
+        <operation name="addTravelContract">
+            <input name="request" message="tns:addTravelContractRequest"/>
+            <output name="response" message="tns:addTravelContractResponse"/>
+        </operation>
+        <operation name="updateTravelContract">
+            <input name="request" message="tns:updateTravelContractRequest"/>
+            <output name="response" message="tns:updateTravelContractResponse"/>
+        </operation>
+        <operation name="addAccidentContract">
+            <input name="request" message="tns:addAccidentContractRequest"/>
+            <output name="response" message="tns:addAccidentContractResponse"/>
+        </operation>
+        <operation name="updateAccidentContract">
+            <input name="request" message="tns:updateAccidentContractRequest"/>
+            <output name="response" message="tns:updateAccidentContractResponse"/>
+        </operation>
+        <operation name="addHouseholdContract">
+            <input name="request" message="tns:addHouseholdContractRequest"/>
+            <output name="response" message="tns:addHouseholdContractResponse"/>
+        </operation>
+        <operation name="updateHouseholdContract">
+            <input name="request" message="tns:updateHouseholdContractRequest"/>
+            <output name="response" message="tns:updateHouseholdContractResponse"/>
+        </operation>
+        <operation name="addHouseAndFlatContract">
+            <input name="request" message="tns:addHouseAndFlatContractRequest"/>
+            <output name="response" message="tns:addHouseAndFlatContractResponse"/>
+        </operation>
+        <operation name="updateHouseAndFlatContract">
+            <input name="request" message="tns:updateHouseAndFlatContractRequest"/>
+            <output name="response" message="tns:updateHouseAndFlatContractResponse"/>
+        </operation>
         <operation name="list">
             <input name="request" message="tns:contractsListRequest"/>
             <output name="response" message="tns:contractsListResponse"/>
-        </operation>
-        <operation name="addContract">
-            <input name="request" message="tns:addContractRequest"/>
-            <output name="response" message="tns:addContractResponse"/>
-        </operation>
-        <operation name="updateContract">
-            <input name="request" message="tns:updateContractRequest"/>
-            <output name="response" message="tns:updateContractResponse"/>
         </operation>
         <operation name="contractsOfUser">
             <input name="request" message="tns:getContractOfUserRequest"/>
@@ -78,22 +156,62 @@
         </operation>
     </portType>
 
-    <message name="addContractRequest">
-        <part name="contract" element="ns:addTravelInsuranceContractInput"/>
+    <!-- Travel Insurance -->
+    <message name="addTravelContractRequest">
+        <part name="contract" element="ns:addTravelInsuranceInput"/>
     </message>
-    <message name="addContractResponse">
-        <part name="newContract" element="ns:addTravelInsuranceContractOutput"/>
+    <message name="addTravelContractResponse">
+        <part name="newContract" element="ns:addTravelInsuranceOutput"/>
     </message>
-    <message name="updateContractRequest">
-        <part name="contract" element="ns:updateTravelInsuranceContractInput"/>
+    <message name="updateTravelContractRequest">
+        <part name="contract" element="ns:updateTravelInsuranceInput"/>
     </message>
-    <message name="updateContractResponse">
-        <part name="updatedContract" element="ns:updateTravelInsuranceContractOutput"/>
+    <message name="updateTravelContractResponse">
+        <part name="updatedContract" element="ns:updateTravelInsuranceOutput"/>
     </message>
+    <!-- Accident Insurance -->
+    <message name="addAccidentContractRequest">
+        <part name="contract" element="ns:addAccidentInsuranceInput"/>
+    </message>
+    <message name="addAccidentContractResponse">
+        <part name="newContract" element="ns:addAccidentInsuranceOutput"/>
+    </message>
+    <message name="updateAccidentContractRequest">
+        <part name="contract" element="ns:updateAccidentInsuranceInput"/>
+    </message>
+    <message name="updateAccidentContractResponse">
+        <part name="updatedContract" element="ns:updateAccidentInsuranceOutput"/>
+    </message>
+    <!-- Household Insurance -->
+    <message name="addHouseholdContractRequest">
+        <part name="contract" element="ns:addHouseholdInsuranceInput"/>
+    </message>
+    <message name="addHouseholdContractResponse">
+        <part name="newContract" element="ns:addHouseholdInsuranceOutput"/>
+    </message>
+    <message name="updateHouseholdContractRequest">
+        <part name="contract" element="ns:updateHouseholdInsuranceInput"/>
+    </message>
+    <message name="updateHouseholdContractResponse">
+        <part name="updatedContract" element="ns:updateHouseholdInsuranceOutput"/>
+    </message>
+    <!-- House and Flat Insurance -->
+    <message name="addHouseAndFlatContractRequest">
+        <part name="contract" element="ns:addHouseAndFlatInsuranceInput"/>
+    </message>
+    <message name="addHouseAndFlatContractResponse">
+        <part name="newContract" element="ns:addHouseAndFlatInsuranceOutput"/>
+    </message>
+    <message name="updateHouseAndFlatContractRequest">
+        <part name="contract" element="ns:updateHouseAndFlatInsuranceInput"/>
+    </message>
+    <message name="updateHouseAndFlatContractResponse">
+        <part name="updatedContract" element="ns:updateHouseAndFlatInsuranceOutput"/>
+    </message>
+    <message name="contractsListRequest"/>
     <message name="contractsListResponse">
         <part name="list" element="ns:contracts"/>
     </message>
-    <message name="contractsListRequest"/>
     <message name="getContractOfUserRequest">
         <part name="id" element="ns:getInsurerContractsInput"/>
     </message>
